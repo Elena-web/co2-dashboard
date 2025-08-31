@@ -1,3 +1,4 @@
+import React from 'react';
 import type { CountryData } from '../../types/co2';
 import { CountryTable } from '../CountryTable/CountryTable';
 import styles from './CountryCard.module.css';
@@ -9,7 +10,12 @@ interface Props {
   extraColumns: string[];
 }
 
-export const CountryCard = ({ name, country, year, extraColumns }: Props) => {
+export const CountryCard = React.memo(function CountryCard({
+  name,
+  country,
+  year,
+  extraColumns,
+}: Props) {
   const latest = country.data.find((d) => d.year === year);
 
   return (
@@ -28,4 +34,4 @@ export const CountryCard = ({ name, country, year, extraColumns }: Props) => {
       />
     </div>
   );
-};
+});

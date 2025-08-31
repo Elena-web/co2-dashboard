@@ -1,3 +1,4 @@
+import React, { useMemo, useCallback } from 'react';
 import type { CO2Data, YearlyData } from '../../types/co2';
 import styles from './CountryTable.module.css';
 
@@ -15,13 +16,18 @@ const defaultCols: (keyof YearlyData)[] = [
   'co2_per_capita',
 ];
 
-export const CountryTable = ({
+export const CountryTable = React.memo(function CountryTable({
   data,
   year,
   extraColumns,
   onShowCountry,
-}: Props) => {
-  const cols = [...defaultCols, ...extraColumns];
+}: Props) {
+  const cols = useMemo(() => [...defaultCols, ...extraColumns], [extraColumns]);
+
+  const handleShow = useCallback(
+    (name: string) => () => onShowCountry(name),
+    [onShowCountry]
+  );
 
   return (
     <table className={styles.table}>
@@ -37,25 +43,19 @@ export const CountryTable = ({
       </thead>
       <tbody>
         {Object.entries(data).map(([name, country]) => {
-          if (!country || !country.data) {
-            return null;
-          }
+          if (!country || !country.data) return null;
           const row = country.data.find((d) => d.year === year);
-          if (!row) {
-            return null;
-          }
+          if (!row) return null;
+
           return (
-            <tr key={name}>
+            <tr key={`${name}-${year}`}>
               <td>{name}</td>
               <td>{country.iso_code ?? 'N/A'}</td>
               {cols.map((col) => (
                 <td key={col}>{row[col] ?? 'N/A'}</td>
               ))}
               <td>
-                <button
-                  className={styles.button}
-                  onClick={() => onShowCountry(name)}
-                >
+                <button className={styles.button} onClick={handleShow(name)}>
                   Show
                 </button>
               </td>
@@ -65,4 +65,4 @@ export const CountryTable = ({
       </tbody>
     </table>
   );
-};
+});
