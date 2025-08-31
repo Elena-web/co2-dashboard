@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.select:hover {
+  border-color: #007acc;
+}

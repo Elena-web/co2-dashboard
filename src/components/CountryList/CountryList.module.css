@@ -1,0 +1,32 @@
+.item {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease;
+}
+
+.item:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.info {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #54a300;
+}

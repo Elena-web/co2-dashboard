@@ -1,0 +1,39 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background-color: #e3f29b;
+}
+
+.button {
+  background-color: #8c9296;
+  color: white;
+  border: none;
+  padding: 0.7rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #e3f29b;
+  color: #000;
+}
